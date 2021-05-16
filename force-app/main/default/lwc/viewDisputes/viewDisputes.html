@@ -1,0 +1,35 @@
+<template>
+    <div class="slds-scrollable_y" style="height: 20rem">
+        <lightning-card title="Find Dispute" icon-name="utility:cases">
+            <div class="slds-var-m-around_medium">
+                <lightning-input type="search" onchange={handleKeyChange} class="slds-var-m-bottom_small" label="Search"
+                    value={searchKey}></lightning-input>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_4-of-12" style="border-bottom: solid 3px;">
+                        <span>Dispute Number</span>
+                    </div>
+                    <div class="slds-col slds-size_4-of-12" style="border-bottom: solid 3px;">
+                        <span>Dispute Type</span>
+                    </div>
+                    <div class="slds-col slds-size_4-of-12" style="border-bottom: solid 3px;">
+                        <span>Petitioner</span>
+                    </div>
+            
+                    <template if:true={disputes.data}>
+                        <template for:each={disputes.data} for:item="dispute">
+                            <div class="slds-col slds-size_4-of-12" key={dispute.Id}>
+                                <span key={dispute.Id}>{dispute.Dispute_Number__c}</span>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12" key={dispute.Id}>
+                                <span key={dispute.Id}>{dispute.Dispute_Type__c}</span>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12" key={dispute.Id}>
+                                <span key={dispute.Id}>{dispute.Petitioner__c}</span>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </div>
+        </lightning-card>
+    </div>
+</template>
